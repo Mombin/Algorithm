@@ -22,11 +22,3 @@ Add/Del_front|O(1)|-|O(n)
 Add/Del_end|O(n)|-|Full array : O()  other :O(1)
 Add/Del_mid|O(n)|-|O(n)
 Wasting Space|O(n)|0|O(n)
-
-
-modified 19 06 13
-
-modified 19 06 13 16:22
-
-
-commit ?
