@@ -12,7 +12,7 @@
   - too long time indexing node
   - each node seperate from other node 
 > 연결 리스트 개요
-> ![Linkded List1](./Picture/Linked_list.png)
+> ![Linkded List1](./Picture/Linked_list.png)  
 연결 리스트는 Head Node와 nullptr을 가르키는 마지막 노드가 있다.
 
 항목|연결리스트|배열|동적배열
