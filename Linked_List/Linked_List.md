@@ -24,5 +24,3 @@ Add/Del_mid|O(n)|-|O(n)
 Wasting Space|O(n)|0|O(n)
 
 
-add:변경사항 추가
-add:변경사항 추가2
