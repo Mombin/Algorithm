@@ -5,7 +5,7 @@ using namespace std;
 
 class Invalid_Index_Exception{};
 
-template<Typename T>
+template<typename T>
 class ListNode
 {
 public:
@@ -19,7 +19,7 @@ public:
         value(value1), next(next1){}
 };
 
-template<Typename T>
+template<typename T>
 class LinkedList
 {
 public:
@@ -56,15 +56,84 @@ public:
             }
             size++;
         }
+        catch(Invalid_Index_Exception e)
+        {
+        	cout << "잘못된 인덱스입니다."<<endl;
+        	exit(2);
+		}
     }
 
+    void erase(int k)
+    {
+        try
+        {
+            if(k<0||k>=size) throw Invalid_Index_Exception();
+            if(k==0)
+            {
+                ListNode<T> *tmp= head->next;
+                delete head;
+                head = tmp;
+            }
+            else
+            {
+                ListNode<T> *dest = head, *tmp;
+                for(int i=0; i<k-1; i++) dest = dest->next;
+                tmp = dest->next->next;
+                delete dest->next;
+                dest->next = tmp;
+            }
+            size--;
+        }
+        catch(Invalid_Index_Exception e)
+        {
+        	cout << "잘못된 인덱스입니다."<<endl;
+        	exit(2);
+		}
+    }
+    int search(T value)
+    {
+    	ListNode<T> *temp = head;
+    	for(int i=0;i<size;i++)
+    	{
+    		if(temp->value == value) return i;
+    		temp = temp->next;
+		}
+		return -1;
+	}
 };
 
-
+template<typename T>
+ostream& operator <<(ostream &out, const LinkedList<T> &LL)
+{
+    ListNode<T> *tmp = LL.head;
+    out << '[';
+    for(int i=0; i<LL.size;i++)
+    {
+        out << tmp->value;
+        tmp = tmp->next;
+        if(i<LL.size-1) out << ", ";
+    }
+    out << ']';
+    return out;
+}
 
 
 int main()
 {
-    cout << "Hello world!" << endl;
+    LinkedList<int> LL;
+    LL.insert(0, 1); cout << LL << endl;
+    LL.insert(1, 2); cout << LL << endl;
+    LL.insert(2, 3); cout << LL << endl;
+    LL.insert(0, 4); cout << LL << endl;
+    LL.insert(0, 5); cout << LL << endl;
+    LL.insert(5, 6); cout << LL << endl;
+    LL.insert(4, 7); cout << LL << endl;
+    LL.insert(1, 8); cout << LL << endl;
+    LL.erase(4); cout << LL << endl;
+    LL.erase(0); cout << LL << endl;
+    LL.erase(5); cout << LL << endl;
+    LL.insert(3, 9); cout << LL << endl;
+    LL.erase(1); cout << LL << endl;
+    LL.insert(1, 10); cout << LL << endl;
     return 0;
 }
