@@ -3,7 +3,7 @@
 
 using namespace std;
 
-class Invalid_Index_Exception{};
+class Invalid_Index_Exception{};;
 
 template<typename T>
 class ListNode
